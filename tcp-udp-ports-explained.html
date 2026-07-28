@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCP and UDP Ports Explained | DR Technology</title>
+  <meta name="description" content="A simple guide to TCP and UDP ports, common port number ranges, and media-related ports used in streaming, broadcast, and IP-based environments.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">DR Technology</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="mobile-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:hello@drtechnology.co.uk" class="nav-cta">Email Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container">
+        <div class="section-heading hero-copy">
+          <p class="eyebrow">Knowledge Centre</p>
+          <h1>TCP and UDP ports explained</h1>
+          <p class="hero-text">
+            Port numbers help devices and applications identify which service or process network traffic should reach. This page gives a straightforward overview of TCP and UDP, common port ranges, and ports often seen in media, broadcast, and streaming environments.
+          </p>
+          <div class="hero-actions">
+            <a href="knowledge-centre.html" class="btn btn-secondary">Back to Knowledge Centre</a>
+            <a href="contact.html" class="btn btn-primary">Talk to DR Technology</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <article class="article-content">
+          <h2>What is a port number?</h2>
+          <p>
+            A port number is used alongside an IP address to direct network traffic to the right application or service on a device. While the IP address identifies the device itself, the port number helps identify the specific function or service that should receive the data.
+          </p>
+          <p>
+            For example, a server may use one port for web traffic, another for secure remote access, and another for streaming or signalling. This is why ports are a basic but important part of network design, firewall rules, and troubleshooting.
+          </p>
+
+          <h2>TCP vs UDP</h2>
+          <p>
+            TCP and UDP are both transport layer protocols, but they behave differently. TCP is generally used when reliable, ordered delivery matters, while UDP is often preferred when low latency is more important than guaranteed delivery.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>TCP</th>
+                <th>UDP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Connection type</td>
+                <td>Connection-oriented</td>
+                <td>Connectionless</td>
+              </tr>
+              <tr>
+                <td>Reliability</td>
+                <td>Reliable delivery with acknowledgements and retransmission</td>
+                <td>No guaranteed delivery</td>
+              </tr>
+              <tr>
+                <td>Order of packets</td>
+                <td>Packets arrive in order</td>
+                <td>Packets may arrive out of order</td>
+              </tr>
+              <tr>
+                <td>Speed</td>
+                <td>Usually slower due to error checking and control</td>
+                <td>Usually faster with lower overhead</td>
+              </tr>
+              <tr>
+                <td>Typical uses</td>
+                <td>Web traffic, email, file transfer, remote login</td>
+                <td>Streaming, VoIP, DNS, live media transport</td>
+              </tr>
+              <tr>
+                <td>Best suited for</td>
+                <td>When accuracy and complete delivery matter</td>
+                <td>When speed and low latency matter more</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Well-known ports and dynamic ports</h2>
+          <p>
+            Port numbers are normally grouped into ranges. Understanding these ranges is useful when working with servers, clients, media devices, managed switches, and firewall policies.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Port range</th>
+                <th>Name</th>
+                <th>Typical purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0–1023</td>
+                <td>Well-known ports</td>
+                <td>Reserved for common services such as HTTP, HTTPS, DNS, SSH, SMTP, and FTP.</td>
+              </tr>
+              <tr>
+                <td>1024–49151</td>
+                <td>Registered ports</td>
+                <td>Often used by applications, platforms, and vendor-specific services.</td>
+              </tr>
+              <tr>
+                <td>49152–65535</td>
+                <td>Dynamic / private ports</td>
+                <td>Usually used for temporary client sessions, ephemeral connections, and dynamic media flows.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Common TCP and UDP ports</h2>
+          <p>
+            The table below lists some widely used ports and the services they are commonly associated with. In practice, applications can be configured differently, but these are standard reference points.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Port</th>
+                <th>Protocol</th>
+                <th>Service / typical use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>20 / 21</td>
+                <td>TCP</td>
+                <td>FTP – file transfer</td>
+              </tr>
+              <tr>
+                <td>22</td>
+                <td>TCP</td>
+                <td>SSH – secure remote access</td>
+              </tr>
+              <tr>
+                <td>23</td>
+                <td>TCP</td>
+                <td>Telnet – legacy remote terminal access</td>
+              </tr>
+              <tr>
+                <td>25</td>
+                <td>TCP</td>
+                <td>SMTP – email transfer</td>
+              </tr>
+              <tr>
+                <td>53</td>
+                <td>UDP / TCP</td>
+                <td>DNS – name resolution</td>
+              </tr>
+              <tr>
+                <td>67 / 68</td>
+                <td>UDP</td>
+                <td>DHCP – automatic IP addressing</td>
+              </tr>
+              <tr>
+                <td>80</td>
+                <td>TCP</td>
+                <td>HTTP – web traffic</td>
+              </tr>
+              <tr>
+                <td>110</td>
+                <td>TCP</td>
+                <td>POP3 – email retrieval</td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td>UDP</td>
+                <td>NTP – time synchronisation</td>
+              </tr>
+              <tr>
+                <td>143</td>
+                <td>TCP</td>
+                <td>IMAP – email access and management</td>
+              </tr>
+              <tr>
+                <td>161 / 162</td>
+                <td>UDP</td>
+                <td>SNMP – monitoring and traps</td>
+              </tr>
+              <tr>
+                <td>389</td>
+                <td>TCP / UDP</td>
+                <td>LDAP – directory services</td>
+              </tr>
+              <tr>
+                <td>443</td>
+                <td>TCP</td>
+                <td>HTTPS – encrypted web traffic</td>
+              </tr>
+              <tr>
+                <td>445</td>
+                <td>TCP</td>
+                <td>SMB – file and printer sharing</td>
+              </tr>
+              <tr>
+                <td>5060 / 5061</td>
+                <td>UDP / TCP</td>
+                <td>SIP – signalling for voice and media sessions</td>
+              </tr>
+              <tr>
+                <td>554</td>
+                <td>TCP / UDP</td>
+                <td>RTSP – streaming session control</td>
+              </tr>
+              <tr>
+                <td>1935</td>
+                <td>TCP</td>
+                <td>RTMP – legacy streaming transport</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Ports often seen in media and streaming environments</h2>
+          <p>
+            IP-based media systems often rely on timing, signalling, control, and real-time transport protocols that go beyond standard office traffic. These are some of the ports and services commonly encountered in media, streaming, and broadcast-adjacent workflows.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Port</th>
+                <th>Protocol</th>
+                <th>Service</th>
+                <th>Typical role in media environments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>53</td>
+                <td>UDP / TCP</td>
+                <td>DNS</td>
+                <td>Supports name resolution for devices, controllers, and services.</td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td>UDP</td>
+                <td>NTP</td>
+                <td>Provides general network time synchronisation.</td>
+              </tr>
+              <tr>
+                <td>319</td>
+                <td>UDP</td>
+                <td>PTP Event Messages</td>
+                <td>Used by Precision Time Protocol for highly accurate timing exchange.</td>
+              </tr>
+              <tr>
+                <td>320</td>
+                <td>UDP</td>
+                <td>PTP General Messages</td>
+                <td>Used by Precision Time Protocol for supporting synchronisation messaging.</td>
+              </tr>
+              <tr>
+                <td>5004</td>
+                <td>UDP</td>
+                <td>RTP</td>
+                <td>Commonly associated with real-time audio and video transport.</td>
+              </tr>
+              <tr>
+                <td>5005</td>
+                <td>UDP</td>
+                <td>RTCP</td>
+                <td>Used for control data, quality feedback, and reporting.</td>
+              </tr>
+              <tr>
+                <td>5353</td>
+                <td>UDP</td>
+                <td>mDNS</td>
+                <td>Sometimes used for local service discovery in IP-based environments.</td>
+              </tr>
+              <tr>
+                <td>5060</td>
+                <td>UDP / TCP</td>
+                <td>SIP</td>
+                <td>Session signalling for voice and some media workflows.</td>
+              </tr>
+              <tr>
+                <td>5061</td>
+                <td>TCP</td>
+                <td>SIP TLS</td>
+                <td>Encrypted SIP signalling.</td>
+              </tr>
+              <tr>
+                <td>Dynamic range</td>
+                <td>UDP</td>
+                <td>RTP media ports</td>
+                <td>Many media systems use configurable or dynamically assigned UDP ports for actual audio and video flows.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Why this matters in real networks</h2>
+          <p>
+            Understanding ports is helpful when planning switch policies, QoS behaviour, firewalls, VLANs, ACLs, remote contribution links, and device interoperability. Even a simple table like this can make troubleshooting much easier when you need to understand what type of traffic a system is trying to send or receive.
+          </p>
+          <p>
+            In media and broadcast-adjacent environments, the challenge is often not just whether traffic exists, but whether timing, delivery method, and network behaviour are appropriate for the application. That is where a practical understanding of TCP, UDP, and related ports becomes useful.
+          </p>
+
+          <div class="card-actions" style="margin-top: 32px;">
+            <a href="knowledge-centre.html" class="btn btn-secondary">Back to Knowledge Centre</a>
+            <a href="contact.html" class="btn btn-primary">Ask a technical question</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
+      <p>DR Technology · Technology Infrastructure · Equipment Supply · Systems Integration</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

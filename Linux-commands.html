@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Commands | DR Technology</title>
+  <meta name="description" content="A concise Linux command reference covering file operations, navigation, permissions, networking, process management, Bash shortcuts, Nano shortcuts, pipes, redirection, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">DR Technology</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="mobile-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:hello@drtechnology.co.uk" class="nav-cta">Email Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container">
+        <div class="section-heading hero-copy">
+          <p class="eyebrow">Knowledge Centre</p>
+          <h1>Linux commands quick reference</h1>
+          <p class="hero-text">
+            Linux commands allow you to interact directly with the operating system. From navigating directories and managing files to checking system status and controlling processes, a small set of commands can cover a lot of day-to-day tasks.
+          </p>
+          <div class="hero-actions">
+            <a href="knowledge-centre.html" class="btn btn-secondary">Back to Knowledge Centre</a>
+            <a href="contact.html" class="btn btn-primary">Talk to DR Technology</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <article class="article-content">
+          <h2>Basic Unix commands</h2>
+          <p>
+            These basic commands cover directory navigation, file creation, copying, moving, and working with permissions. They are often the first tools you will reach for in a terminal session.
+          </p>
+          <ul>
+            <li><code>ls</code>: List directory contents.</li>
+            <li><code>cd</code>: Change the current directory.</li>
+            <li><code>pwd</code>: Print the current working directory.</li>
+            <li><code>mkdir</code>: Create a new directory.</li>
+            <li><code>touch</code>: Create a new file or update the timestamp of an existing file.</li>
+            <li><code>rm</code>: Remove files or directories.</li>
+            <li><code>cp</code>: Copy files or directories.</li>
+            <li><code>mv</code>: Move or rename files or directories.</li>
+            <li><code>cat</code>: Concatenate and display the content of files.</li>
+            <li><code>grep</code>: Search for patterns in files.</li>
+            <li><code>chmod</code>: Change file permissions.</li>
+            <li><code>chown</code>: Change file ownership.</li>
+            <li><code>sudo</code>: Execute a command with superuser privileges.</li>
+            <li><code>man</code>: Display manual pages for commands.</li>
+            <li><code>clear</code>: Clear the terminal screen.</li>
+          </ul>
+
+          <h2>Navigation</h2>
+          <p>
+            Navigation commands help you move around the filesystem and work with directories.
+          </p>
+          <ul>
+            <li><code>ls -l</code>: Long listing format.</li>
+            <li><code>ls -a</code>: List all files including hidden files.</li>
+            <li><code>ls -t</code>: Sort files by modification time.</li>
+            <li><code>ls -R</code>: List subdirectories recursively.</li>
+            <li><code>cd ..</code>: Move to the parent directory.</li>
+            <li><code>cd -</code>: Move to the previous directory.</li>
+            <li><code>cd /path/to/directory</code>: Change to a specific directory.</li>
+            <li><code>rmdir</code>: Remove a directory (if empty).</li>
+            <li><code>rm -r</code>: Remove a directory and its contents recursively.</li>
+            <li><code>rm -rf</code>: Forcefully remove a directory and its contents.</li>
+            <li><code>cp -r</code>: Copy directories recursively.</li>
+          </ul>
+
+          <h2>File operations</h2>
+          <p>
+            These commands help you view, search, compare, and manage files.
+          </p>
+          <ul>
+            <li><code>less file</code>: View file content page by page.</li>
+            <li><code>head file</code>: Display the beginning of a file.</li>
+            <li><code>head -n 10 file</code>: Display the first 10 lines of a file.</li>
+            <li><code>tail file</code>: Display the end of a file.</li>
+            <li><code>tail -n 10 file</code>: Display the last 10 lines of a file.</li>
+            <li><code>nano</code> or <code>vi</code>: Text editors for creating or editing files.</li>
+            <li><code>grep -i</code>: Perform a case-insensitive search.</li>
+            <li><code>grep -r</code>: Search recursively in directories.</li>
+            <li><code>find /dir -name "filename*"</code>: Search for files with a specific name.</li>
+            <li><code>diff file1 file2</code>: Compare files line by line.</li>
+          </ul>
+
+          <h2>File permissions and system information</h2>
+          <p>
+            Permissions control who can read, write, or execute files. System information commands help you understand load, memory, and disk usage.
+          </p>
+          <ul>
+            <li><code>chmod 755 filename</code>: Owner gets read, write, execute; group and others get read and execute.</li>
+            <li><code>chown user:group filename</code>: Change owner and group of a file.</li>
+            <li><code>chgrp group filename</code>: Change group ownership of a file or directory.</li>
+            <li><code>setfacl</code>: Set file access control lists.</li>
+          </ul>
+
+          <h3>System information</h3>
+          <ul>
+            <li><code>top</code>: Display and update sorted information about system processes.</li>
+            <li><code>ps</code>: Display information about active processes.</li>
+            <li><code>ps -ef</code>: Display all processes.</li>
+            <li><code>df</code>: Display disk space usage.</li>
+            <li><code>df -h</code>: Display sizes in a human-readable format.</li>
+            <li><code>du</code>: Display disk usage of files and directories.</li>
+            <li><code>du -sh *</code>: Display total size of each directory in the current directory.</li>
+            <li><code>uptime</code>: Display system uptime and load averages.</li>
+            <li><code>free -m</code>: Display amount of free and used memory in megabytes.</li>
+          </ul>
+
+          <h2>Networking</h2>
+          <ul>
+            <li><code>ping host</code>: Send ICMP echo requests to a host.</li>
+            <li><code>ssh user@host</code>: Connect to a remote host via SSH.</li>
+            <li><code>scp file.txt user@host:/remote/dir/</code>: Securely copy a file to a remote host.</li>
+            <li><code>wget URL</code> or <code>curl URL</code>: Download files from the internet.</li>
+            <li><code>wget -O filename URL</code>: Download file and save with a specific name.</li>
+          </ul>
+
+          <h2>Compression and archiving</h2>
+          <ul>
+            <li><code>tar -cvf archive.tar files</code>: Create a new tar archive.</li>
+            <li><code>tar -xvf archive.tar</code>: Extract files from a tar archive.</li>
+            <li><code>tar -zcvf archive.tar.gz files</code>: Create a gzip-compressed tar archive.</li>
+            <li><code>tar -zxvf archive.tar.gz</code>: Extract files from a gzip-compressed tar archive.</li>
+            <li><code>gzip file</code> / <code>gunzip file.gz</code>: Compress or decompress files using gzip.</li>
+            <li><code>gzip -9 filename</code>: Compress file using maximum gzip compression.</li>
+            <li><code>zip archive.zip files</code> / <code>unzip archive.zip</code>: Create or extract zip archives.</li>
+          </ul>
+
+          <h2>Process management</h2>
+          <ul>
+            <li><code>kill PID</code>: Terminate a process by ID.</li>
+            <li><code>kill -9 PID</code>: Forcefully terminate a process by ID.</li>
+            <li><code>killall name</code>: Terminate all processes matching a given name.</li>
+          </ul>
+
+          <h2>Miscellaneous</h2>
+          <ul>
+            <li><code>date</code>: Display or set the system date and time.</li>
+            <li><code>history</code>: Display the command history.</li>
+            <li><code>history | grep keyword</code>: Search command history for a specific keyword.</li>
+          </ul>
+
+          <h2><code>ls</code> options</h2>
+          <ul>
+            <li><code>-a</code>: Show all files (including hidden).</li>
+            <li><code>-R</code>: Recursive listing.</li>
+            <li><code>-r</code>: Reverse order.</li>
+            <li><code>-t</code>: Sort by last modified time.</li>
+            <li><code>-S</code>: Sort by file size.</li>
+            <li><code>-l</code>: Long listing format.</li>
+            <li><code>-1</code>: One file per line.</li>
+            <li><code>-m</code>: Comma-separated output.</li>
+            <li><code>-Q</code>: Quoted output.</li>
+          </ul>
+
+          <h2>Bash shortcuts</h2>
+          <ul>
+            <li><code>Ctrl+C</code>: Stop current command.</li>
+            <li><code>Ctrl+Z</code>: Suspend current process.</li>
+            <li><code>Ctrl+A</code>: Go to start of line.</li>
+            <li><code>Ctrl+E</code>: Go to end of line.</li>
+            <li><code>Ctrl+U</code>: Cut from start of line to cursor.</li>
+            <li><code>Ctrl+K</code>: Cut from cursor to end of line.</li>
+            <li><code>Ctrl+R</code>: Search command history.</li>
+            <li><code>!!</code>: Repeat last command.</li>
+            <li><code>!abc</code>: Run last command starting with <code>abc</code>.</li>
+            <li><code>!abc:p</code>: Print last command starting with <code>abc</code>.</li>
+            <li><code>!$</code> or <code>Alt+.</code>: Last argument of previous command.</li>
+            <li><code>!*</code>: All arguments of previous command.</li>
+            <li><code>^abc^123</code>: Run previous command, replacing <code>abc</code> with <code>123</code>.</li>
+          </ul>
+
+          <h2>Bash commands and variables</h2>
+          <h3>Useful Bash commands</h3>
+          <ul>
+            <li><code>uname -a</code>: Show system and kernel information.</li>
+            <li><code>head -n 1 /etc/issue</code>: Show distribution information (where available).</li>
+            <li><code>mount</code>: Show mounted filesystems.</li>
+            <li><code>date</code>: Show system date.</li>
+            <li><code>uptime</code>: Show system uptime.</li>
+            <li><code>whoami</code>: Show your username.</li>
+            <li><code>man command</code>: Show manual for a command.</li>
+          </ul>
+
+          <h3>Common environment variables</h3>
+          <ul>
+            <li><code>env</code>: Show environment variables.</li>
+            <li><code>echo $NAME</code>: Output value of <code>$NAME</code> variable.</li>
+            <li><code>export NAME=value</code>: Set <code>$NAME</code> to a value.</li>
+            <li><code>$PATH</code>: Executable search path.</li>
+            <li><code>$HOME</code>: Home directory.</li>
+            <li><code>$SHELL</code>: Current shell.</li>
+          </ul>
+
+          <h2>Directory operations</h2>
+          <ul>
+            <li><code>pwd</code>: Show current directory.</li>
+            <li><code>mkdir dir</code>: Create directory <code>dir</code>.</li>
+            <li><code>cd dir</code>: Change directory to <code>dir</code>.</li>
+            <li><code>cd ..</code>: Go up one directory.</li>
+            <li><code>ls</code>: List files in current directory.</li>
+          </ul>
+
+          <h2>Nano shortcuts</h2>
+          <h3>Files</h3>
+          <ul>
+            <li><code>Ctrl+R</code>: Read file into buffer.</li>
+            <li><code>Ctrl+O</code>: Save file.</li>
+            <li><code>Ctrl+X</code>: Close file / exit nano.</li>
+          </ul>
+
+          <h3>Cut and paste</h3>
+          <ul>
+            <li><code>Alt+A</code>: Start marking text.</li>
+            <li><code>Ctrl+K</code>: Cut marked text or current line.</li>
+            <li><code>Ctrl+U</code>: Paste text.</li>
+          </ul>
+
+          <h3>Navigate file</h3>
+          <ul>
+            <li><code>Alt+/</code>: Go to end of file.</li>
+            <li><code>Ctrl+A</code>: Beginning of line.</li>
+            <li><code>Ctrl+E</code>: End of line.</li>
+            <li><code>Ctrl+C</code>: Show current line and column.</li>
+            <li><code>Ctrl+_</code>: Go to line number.</li>
+          </ul>
+
+          <h3>Search file</h3>
+          <ul>
+            <li><code>Ctrl+W</code>: Find.</li>
+            <li><code>Alt+W</code>: Find next.</li>
+            <li><code>Ctrl+\</code>: Search and replace.</li>
+          </ul>
+
+          <h2>I/O redirection</h2>
+          <ul>
+            <li><code>cmd &lt; file</code>: Take input of <code>cmd</code> from file.</li>
+            <li><code>cmd1 &lt;(cmd2)</code>: Output of <code>cmd2</code> as file-like input to <code>cmd1</code>.</li>
+            <li><code>cmd &gt; file</code>: Send standard output (stdout) of <code>cmd</code> to file.</li>
+            <li><code>cmd &gt; /dev/null</code>: Discard stdout of <code>cmd</code>.</li>
+            <li><code>cmd &gt;&gt; file</code>: Append stdout to file.</li>
+            <li><code>cmd 2&gt; file</code>: Send error output (stderr) of <code>cmd</code> to file.</li>
+            <li><code>cmd 1&gt;&2</code>: Send stdout to the same place as stderr.</li>
+            <li><code>cmd 2&gt;&1</code>: Send stderr to the same place as stdout.</li>
+            <li><code>cmd &amp;&gt; file</code>: Send all output of <code>cmd</code> to file.</li>
+          </ul>
+
+          <h2>Pipes</h2>
+          <ul>
+            <li><code>cmd1 | cmd2</code>: Send stdout of <code>cmd1</code> to <code>cmd2</code> as input.</li>
+            <li><code>cmd1 |& cmd2</code>: Send stderr of <code>cmd1</code> to <code>cmd2</code> (in some shells).</li>
+          </ul>
+
+          <h2>Command lists</h2>
+          <ul>
+            <li><code>cmd1 ; cmd2</code>: Run <code>cmd1</code> then <code>cmd2</code>.</li>
+            <li><code>cmd1 && cmd2</code>: Run <code>cmd2</code> if <code>cmd1</code> is successful.</li>
+            <li><code>cmd1 || cmd2</code>: Run <code>cmd2</code> if <code>cmd1</code> is not successful.</li>
+            <li><code>cmd &amp;</code>: Run <code>cmd</code> in the background.</li>
+          </ul>
+
+          <h2>Watching a command</h2>
+          <ul>
+            <li><code>watch -n 5 'ntpq -p'</code>: Run <code>ntpq -p</code> every 5 seconds and display output.</li>
+          </ul>
+
+          <h2>File permissions and numbers</h2>
+          <p>
+            Permission numbers are calculated by adding values for read, write, and execute. The first digit is owner permission, second is group, third is everyone.
+          </p>
+          <ul>
+            <li><code>4</code>: read (<code>r</code>)</li>
+            <li><code>2</code>: write (<code>w</code>)</li>
+            <li><code>1</code>: execute (<code>x</code>)</li>
+          </ul>
+
+          <h2>Screen shortcuts</h2>
+          <ul>
+            <li><code>screen</code>: Start a screen session.</li>
+            <li><code>screen -r</code>: Resume a screen session.</li>
+            <li><code>screen -list</code>: Show your current screen sessions.</li>
+            <li><code>Ctrl+A</code>: Activate commands for screen.</li>
+            <li><code>Ctrl+A c</code>: Create a new terminal window.</li>
+            <li><code>Ctrl+A n</code>: Go to the next window.</li>
+            <li><code>Ctrl+A p</code>: Go to the previous window.</li>
+            <li><code>Ctrl+A "</code>: Show a list of windows.</li>
+            <li><code>Ctrl+A A</code>: Rename the current window.</li>
+          </ul>
+
+          <div class="card-actions" style="margin-top: 32px;">
+            <a href="knowledge-centre.html" class="btn btn-secondary">Back to Knowledge Centre</a>
+            <a href="contact.html" class="btn btn-primary">Ask a technical question</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
+      <p>DR Technology · Technology Infrastructure · Equipment Supply · Systems Integration</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

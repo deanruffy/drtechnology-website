@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Networking Fundamentals | DR Technology</title>
+  <meta name="description" content="A detailed networking fundamentals guide for professionals covering what a network is, why networking matters in SOC, packet flow, devices, addressing, subnetting, zones, ports, protocols, TCP, UDP, and high-value SOC ports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">DR Technology</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="mobile-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:hello@drtechnology.co.uk" class="nav-cta">Email Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container">
+        <div class="section-heading hero-copy">
+          <p class="eyebrow">Knowledge Centre</p>
+          <h1>Networking Fundamentals</h1>
+          <p class="hero-text">
+            A detailed networking fundamentals guide for professionals covering what a network is, why networking matters in SOC, packet flow, devices, addressing, subnetting, zones, ports, protocols, TCP, UDP, and high-value SOC ports.
+          </p>
+          <div class="hero-actions">
+            <a href="knowledge-centre.html" class="btn btn-secondary">Back to Knowledge Centre</a>
+            <a href="contact.html" class="btn btn-primary">Talk to DR Technology</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section class="section">
+      <div class="container">
+        <article class="article-content">
+          <h2>Guide contents</h2>
+          <p>These topics are covered in detail throughout the guide. Click on any topic below to navigate to that section.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Page</th><th>Topic</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td><a href="#page-1">Page 1 – Networking fundamentals: SOC analyst edition</a></td></tr>
+                <tr><td>2</td><td><a href="#page-2">Page 2 – Why networking matters for SOC analysts</a></td></tr>
+                <tr><td>3</td><td><a href="#page-3">Page 3 – What Is a Network?</a></td></tr>
+                <tr><td>4</td><td><a href="#page-4">Page 4 – How Data Travels Across a Network</a></td></tr>
+                <tr><td>5</td><td><a href="#page-5">Page 5 – Core Network Devices</a></td></tr>
+                <tr><td>6</td><td><a href="#page-6">Page 6 – Switch vs Router vs Access Point vs Gateway</a></td></tr>
+                <tr><td>7</td><td><a href="#page-7">Page 7 – MAC Address Explained</a></td></tr>
+                <tr><td>8</td><td><a href="#page-8">Page 8 – IP Address Explained</a></td></tr>
+                <tr><td>9</td><td><a href="#page-9">Page 9 – Private IP vs Public IP</a></td></tr>
+                <tr><td>10</td><td><a href="#page-10">Page 10 – Subnet Basics</a></td></tr>
+                <tr><td>11</td><td><a href="#page-11">Page 11 – CIDR Explained</a></td></tr>
+                <tr><td>12</td><td><a href="#page-12">Page 12 – LAN vs WAN</a></td></tr>
+                <tr><td>13</td><td><a href="#page-13">Page 13 – DMZ</a></td></tr>
+                <tr><td>14</td><td><a href="#page-14">Page 14 – Network Zones Explained</a></td></tr>
+                <tr><td>15</td><td><a href="#page-15">Page 15 – Ports and Protocols</a></td></tr>
+                <tr><td>16</td><td><a href="#page-16">Page 16 – Port Ranges and Port Categories</a></td></tr>
+                <tr><td>17</td><td><a href="#page-17">Page 17 – TCP vs UDP</a></td></tr>
+                <tr><td>18</td><td><a href="#page-18">Page 18 – TCP and UDP Student Notes</a></td></tr>
+                <tr><td>19</td><td><a href="#page-19">Page 19 – High-Value SOC Ports</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 id="page-1">Page 1 – Networking fundamentals: SOC analyst edition</h2>
+          <p>The cover page presents the logic of the entire guide: networking concepts eventually feed into investigation. The sequence shown in the handwritten notes moves from the internet, to DNS, to IP address, to ports, to TCP or UDP, to servers, to logs, and finally to the SOC analyst. That is a useful teaching path because it mirrors how many real investigations unfold in security operations.</p>
+          <h3>What this guide includes</h3>
+          <ul>
+            <li>Real-world examples.</li>
+            <li>Interview questions.</li>
+            <li>Memory tricks.</li>
+            <li>SOC investigation scenarios.</li>
+            <li>Troubleshooting methodologies.</li>
+            <li>Industry best practices.</li>
+          </ul>
+          <h3>What you will learn</h3>
+          <ul>
+            <li>IP addressing and how devices are identified on networks.</li>
+            <li>DNS fundamentals and domain-to-IP resolution.</li>
+            <li>Ports and protocols, including how services communicate.</li>
+            <li>TCP vs UDP and why reliability matters.</li>
+            <li>Subnetting, LAN/WAN concepts and network segmentation.</li>
+            <li>DMZ design, analyst workflows and alert investigation basics.</li>
+          </ul>
+          <div class="callout">
+            <p><strong>Expanded explanation:</strong> The formula shown on the cover page — source IP + destination IP + port + protocol + logs + threat intelligence = SOC investigation — is a strong beginner framework. In real environments, analysts often add user identity, hostname, device type, time range, zone, and policy decision to reach a final conclusion.</p>
+          </div>
+
+          <h2 id="page-2">Page 2 – Why networking matters for SOC analysts</h2>
+          <p>Networking is the foundation of every SOC investigation because most incidents involve communication between systems. Malware contacts command-and-control servers, users access web services, DNS resolves domains, and firewalls decide whether traffic is permitted. Without networking knowledge, analysts see isolated alerts; with networking knowledge, they see a coherent story.</p>
+          <h3>The story of a network alert</h3>
+          <ul>
+            <li>User laptop → source IP.</li>
+            <li>Internal network → destination IP path.</li>
+            <li>Firewall → port and policy decision.</li>
+            <li>Internet → protocol used to communicate.</li>
+            <li>Suspicious server → logs and threat context.</li>
+           <div class="diagram-card">
+           <div class="diagram-frame">
+            <img src="Media/Network alert story diagram.png" alt="Network alert story diagram">
+          </div>
+
+          </ul>
+          <h3>Security investigation flow</h3>
+          <ol>
+            <li>Alert generated.</li>
+            <li>Who initiated it?</li>
+            <li>Where did it go?</li>
+            <li>Which port?</li>
+            <li>Which protocol?</li>
+            <li>Allowed or blocked?</li>
+            <li>Malicious or legitimate?</li>
+          </ol>
+          <div class="callout">
+            <p><strong>Expanded explanation:</strong> In real SOC workflows, “who” often means source IP, hostname, user, business owner and asset criticality. “Where” often means destination IP, domain, cloud provider, geolocation and network zone. “How” usually means transport protocol, application protocol, port, encryption, direction and volume of data.</p>
+          </div>
+          <div class="diagram-card">
+           <div class="diagram-frame">
+            <img src="Media/Security investigation flow.png" alt="Security investigation flow diagram">
+          </div>
+
+          <h2 id="page-3">Page 3 – What is a network?</h2>
+          <p>A network is a group of devices connected together to share data, resources and services. Devices can include laptops, phones, printers, servers, routers, switches and many other systems. They communicate by sending packets across network paths and by using agreed communication rules called protocols.</p>
+          <h3>Easy analogy</h3>
+          <p>The notes compare a network to a neighbourhood. Houses represent devices, roads represent network paths, and messages represent data. This is a good starting analogy because it shows that communication depends both on endpoints and on the route used to reach them.</p>
+          <h3>Key network terms</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Term</th><th>Meaning</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Device</td><td>Any system connected to the network.</td></tr>
+                <tr><td>Host</td><td>A device with an IP address.</td></tr>
+                <tr><td>Packet</td><td>A small piece of data.</td></tr>
+                <tr><td>Traffic</td><td>Data moving between systems.</td></tr>
+                <tr><td>Log</td><td>Recorded evidence of activity.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Expanded explanation:</strong> A host often has both a MAC address and an IP address. The MAC address identifies a network interface on the local network, while the IP address identifies a logical location on a network. Packets often contain source and destination IPs, source and destination ports, protocol information and payload data. Logs are the recorded artefacts analysts rely on to reconstruct what happened.</p>
+          <h3>How data moves</h3>
+          <ol>
+            <li>User opens a website.</li>
+            <li>DNS finds the IP address.</li>
+            <li>Packet is created.</li>
+            <li>Router sends data.</li>
+            <li>Website responds.</li>
+            <li>Logs are generated.</li>
+          </ol>
+          <h3>SOC analyst view</h3>
+          <ul>
+            <li>Source IP</li>
+            <li>Port</li>
+            <li>Protocol</li>
+            <li>Timestamp</li>
+            <li>Destination IP</li>
+            <li>Port</li>
+            <li>Protocol</li>
+            <li>Timestamp</li>
+          </ul>
+          <p>SOC analysts investigate who communicated, where the traffic went, and whether it was malicious.</p>
+          <h3>Real world example</h3>
+          <p>An employee laptop opens Google over HTTPS on port 443. That creates visible network events in browser telemetry, DNS logs, firewall logs, proxy logs and endpoint logs.</p>
+          <h3>Memory trick</h3>
+          <p><strong>Network = Devices + Connections + Data</strong></p>
+          <h3>Interview corner</h3>
+          <p><strong>Q.</strong> What is a network?</p>
+          <p><strong>Ans.</strong> A network is a collection of interconnected devices that communicate and share resources using communication protocols.</p>
+          <h3>Quick revision</h3>
+          <ul>
+            <li>Network = connected devices.</li>
+            <li>Devices exchange packets.</li>
+            <li>Traffic = data movement.</li>
+            <li>Logs = evidence.</li>
+            <li>SOC analysts investigate traffic.</li>
+          </ul>
+
+          <h2 id="page-4">Page 4 – How data travels across a network</h2>
+          <p>When a user opens a website, the device does not talk directly in plain language. The system creates packets, builds headers, chooses a route and sends those packets across local devices and internet infrastructure until the destination is reached. The response then returns in the opposite direction.</p>
+          <ol>
+            <li>User enters a website name.</li>
+            <li>DNS resolves the name into an IP address.</li>
+            <li>The client creates packets with source and destination information.</li>
+            <li>Traffic passes through a switch on the local network.</li>
+            <li>A router sends the traffic to the next network.</li>
+            <li>The internet forwards packets toward the server.</li>
+            <li>The server processes the request and sends a response.</li>
+            <li>The response is displayed in the browser.</li>
+          </ol>
+          <div class="callout">
+            <p><strong>Expanded explanation:</strong> HTTP usually uses TCP port 80, HTTPS usually uses TCP port 443, and DNS commonly uses UDP port 53. The packet headers carry IP addresses, ports and protocol information so intermediate systems know how to forward or inspect the traffic.</p>
+          </div>
+
+          <h2 id="page-5">Page 5 – Core network devices</h2>
+          <p>Core devices control how traffic moves around and out of a network. Beginners should know the difference between switches, routers, access points and gateways because these devices appear constantly in both infrastructure and SOC investigations.</p>
+          <ul>
+            <li><strong>Switch:</strong> Connects devices inside the same local network and forwards frames using MAC addresses.</li>
+            <li><strong>Router:</strong> Connects different networks and forwards packets using IP addresses.</li>
+            <li><strong>Access Point:</strong> Allows wireless devices to join the network.</li>
+            <li><strong>Gateway:</strong> A path out of the current network, usually toward another network or the internet.</li>
+          </ul>
+          <p>In many small environments, a single home or office device performs multiple roles at once: router, switch, wireless access point and basic firewall.</p>
+
+          <h2 id="page-6">Page 6 – Switch vs router vs access point vs gateway</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Device</th><th>Main role</th><th>Main identifier</th><th>Common OSI layer</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Switch</td><td>Connects devices in a LAN</td><td>MAC address</td><td>Layer 2</td></tr>
+                <tr><td>Router</td><td>Connects networks</td><td>IP address</td><td>Layer 3</td></tr>
+                <tr><td>Access Point</td><td>Connects wireless devices to the network</td><td>Wireless association + MAC</td><td>Layer 2</td></tr>
+                <tr><td>Gateway</td><td>Exit point to another network</td><td>Depends on network design</td><td>Often Layer 3+</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>A switch makes local delivery decisions. A router decides where traffic should go next. An access point extends the LAN wirelessly. A gateway is the next logical step out of the current network boundary.</p>
+
+          <h2 id="page-7">Page 7 – MAC address explained</h2>
+          <p>A MAC address is a hardware identifier assigned to a network interface card. It is mainly used for local network communication at Layer 2.</p>
+          <ul>
+            <li>Example: <code>00:1A:2B:3C:4D:5E</code></li>
+            <li>The first part identifies the vendor (OUI).</li>
+            <li>The second part identifies the interface uniquely.</li>
+          </ul>
+          <p>Switches learn MAC addresses and store them in forwarding tables. When a frame arrives, the switch checks the destination MAC and forwards the frame to the correct port if it knows where that MAC lives.</p>
+          <p><strong>SOC relevance:</strong> MAC addresses help analysts track devices inside a LAN, identify rogue devices, and correlate switch or NAC events.</p>
+
+          <h2 id="page-8">Page 8 – IP address explained</h2>
+          <p>An IP address is a logical address assigned to a device so that it can communicate across networks. IPv4 addresses are written in dotted decimal notation with four octets, such as <code>192.168.1.100</code>.</p>
+          <ul>
+            <li>Each octet ranges from 0 to 255.</li>
+            <li>Routers use IP addresses to forward traffic between networks.</li>
+            <li>IP addresses may be static or dynamic.</li>
+          </ul>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>MAC address</th><th>IP address</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Physical or interface identity</td><td>Logical network location</td></tr>
+                <tr><td>Used on the local network</td><td>Used across routed networks</td></tr>
+                <tr><td>Usually fixed to the interface</td><td>Can change over time</td></tr>
+                <tr><td>Used by switches</td><td>Used by routers</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>SOC relevance:</strong> Source and destination IPs are some of the most important artifacts in security investigations.</p>
+
+          <h2 id="page-9">Page 9 – Private IP vs public IP</h2>
+          <p>Private IP addresses are used inside internal networks and are not directly routable on the public internet. Public IP addresses are globally unique and reachable across the internet.</p>
+          <ul>
+            <li><code>10.0.0.0/8</code></li>
+            <li><code>172.16.0.0/12</code></li>
+            <li><code>192.168.0.0/16</code></li>
+          </ul>
+          <p>Routers often use NAT (Network Address Translation) so many internal private addresses can share one or more public addresses when reaching the internet.</p>
+
+          <h2 id="page-10">Page 10 – Subnet basics</h2>
+          <p>A subnet is a smaller logical division of a larger network. Subnetting improves performance, helps security segmentation and makes networks easier to manage.</p>
+          <ul>
+            <li>Reduces broadcast domains.</li>
+            <li>Separates departments or functions.</li>
+            <li>Improves policy control.</li>
+            <li>Makes troubleshooting easier.</li>
+          </ul>
+          <p>Example: instead of one large office network, HR, Finance and IT can each have their own subnet.</p>
+
+          <h2 id="page-11">Page 11 – CIDR explained</h2>
+          <p>CIDR stands for Classless Inter-Domain Routing. CIDR notation writes an address followed by a slash and prefix length, such as <code>192.168.1.0/24</code>. The prefix length tells you how many bits represent the network portion.</p>
+          <ul>
+            <li><code>/8</code> = very large network</li>
+            <li><code>/16</code> = large network</li>
+            <li><code>/24</code> = common office subnet</li>
+            <li><code>/30</code> = small point-to-point network</li>
+            <li><code>/32</code> = single host</li>
+          </ul>
+          <p><strong>Worked example:</strong> <code>192.168.10.0/24</code> contains 256 total addresses, with 254 usable host addresses in most basic IPv4 teaching examples.</p>
+
+          <h2 id="page-12">Page 12 – LAN vs WAN</h2>
+          <p>A LAN (Local Area Network) covers a small area such as an office, campus room or home. A WAN (Wide Area Network) connects multiple LANs across larger distances, often using service providers or the internet.</p>
+          <ul>
+            <li><strong>LAN:</strong> high speed, low latency, locally controlled.</li>
+            <li><strong>WAN:</strong> broader reach, generally higher latency, external carrier involvement.</li>
+          </ul>
+          <p>From a SOC perspective, LAN traffic often reveals internal device relationships, while WAN traffic often reveals connections to external resources and potential attack infrastructure.</p>
+
+          <h2 id="page-13">Page 13 – DMZ</h2>
+          <p>A DMZ, or demilitarized zone, is a separate network segment placed between the internet and the internal network. It is designed to host public-facing systems such as web servers, DNS servers or mail gateways while limiting direct exposure to internal devices.</p>
+          <p>Typical rule design allows only specific traffic from the internet to the DMZ and tightly restricts traffic from the DMZ into the internal network.</p>
+
+          <h2 id="page-14">Page 14 – Network zones explained</h2>
+          <p>Network zones are areas of the network separated by trust, sensitivity or function. Common examples include the internet zone, DMZ, user zone, server zone and critical asset zone.</p>
+          <ul>
+            <li>Internet = least trusted.</li>
+            <li>DMZ = public-facing but controlled.</li>
+            <li>User zone = employee devices.</li>
+            <li>Server zone = business applications and infrastructure.</li>
+            <li>Critical assets = highest sensitivity systems.</li>
+          </ul>
+          <p>Segmentation makes lateral movement harder and gives analysts clearer context when investigating a flow between zones.</p>
+
+          <h2 id="page-15">Page 15 – Ports and protocols</h2>
+          <p>An IP address identifies the system. A port identifies the service entry point on that system. A protocol defines the rules of communication. In beginner terms, IP = building, port = door, protocol = rulebook.</p>
+          <ul>
+            <li><code>80</code> → HTTP</li>
+            <li><code>443</code> → HTTPS</li>
+            <li><code>53</code> → DNS</li>
+            <li><code>25</code> → SMTP</li>
+            <li><code>22</code> → SSH</li>
+          </ul>
+          <p>Transport protocols such as TCP and UDP use port numbers to multiplex traffic so one device can run many services at once.</p>
+
+          <h2 id="page-16">Page 16 – Port ranges and port categories</h2>
+          <p>Ports range from 0 to 65535 and are grouped into categories for management and convention.</p>
+          <ul>
+            <li><strong>0–1023:</strong> Well-known ports.</li>
+            <li><strong>1024–49151:</strong> Registered ports.</li>
+            <li><strong>49152–65535:</strong> Dynamic or ephemeral ports.</li>
+          </ul>
+          <p>Client devices often use a high ephemeral source port when connecting to a well-known destination port. For example, a browser may connect from source port <code>52344</code> to destination port <code>443</code>.</p>
+
+          <h2 id="page-17">Page 17 – TCP vs UDP</h2>
+          <p>TCP is a connection-oriented transport protocol designed for reliability. UDP is connectionless and designed for speed and lower overhead.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>TCP</th><th>UDP</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Reliable delivery</td><td>No delivery guarantee</td></tr>
+                <tr><td>Connection-oriented</td><td>Connectionless</td></tr>
+                <tr><td>Ordering and acknowledgements</td><td>Minimal overhead</td></tr>
+                <tr><td>Used for web, email, SSH, file transfer</td><td>Used for DNS, streaming, gaming, VoIP</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Three-way handshake:</strong> SYN → SYN-ACK → ACK. This establishes a session before data transfer starts.</p>
+          <p>TCP also uses sequence numbers and acknowledgements so lost segments can be retransmitted. UDP skips this overhead to stay lightweight and fast.</p>
+
+          <h2 id="page-18">Page 18 – TCP and UDP student notes</h2>
+          <p>This page works as a revision sheet. TCP is better when accuracy and complete delivery matter, while UDP is better where low delay matters more than guaranteed retransmission.</p>
+          <h3>Common TCP use cases</h3>
+          <ul>
+            <li>Web browsing</li>
+            <li>Email</li>
+            <li>File transfer</li>
+            <li>SSH</li>
+            <li>Banking applications</li>
+          </ul>
+          <h3>Common UDP use cases</h3>
+          <ul>
+            <li>DNS requests</li>
+            <li>Streaming</li>
+            <li>Voice and video over IP</li>
+            <li>Online gaming</li>
+            <li>Real-time broadcast systems</li>
+          </ul>
+
+          <h2 id="page-19">Page 19 – High-value SOC ports</h2>
+          <p>Many SOC alerts involve a small set of important ports. Knowing their usual purpose helps analysts quickly determine whether a connection appears normal or suspicious.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Port</th><th>Service</th><th>Purpose</th><th>SOC relevance</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>22</code></td><td>SSH</td><td>Remote administration</td><td>Can indicate admin access, remote management, or suspicious lateral movement.</td></tr>
+                <tr><td><code>53</code></td><td>DNS</td><td>Name resolution</td><td>Useful for tracking domain lookups and spotting tunneling or suspicious domains.</td></tr>
+                <tr><td><code>80</code></td><td>HTTP</td><td>Web traffic</td><td>May reveal unencrypted requests, downloads or callbacks.</td></tr>
+                <tr><td><code>443</code></td><td>HTTPS</td><td>Secure web traffic</td><td>Common and encrypted, but still relevant for detecting suspicious destinations and traffic patterns.</td></tr>
+                <tr><td><code>25</code></td><td>SMTP</td><td>Email sending</td><td>Important for phishing, spam and suspicious outbound email activity.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Important learning point:</strong> Seeing port 443 does not automatically mean traffic is safe. Encryption protects confidentiality, but malware and legitimate applications both use HTTPS.</p>
+
+          <div class="card-actions" style="margin-top: 32px;">
+            <a href="knowledge-centre.html" class="btn btn-secondary">Back to Knowledge Centre</a>
+            <a href="contact.html" class="btn btn-primary">Ask a technical question</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
+      <p>DR Technology · Technology Infrastructure · Equipment Supply · Systems Integration</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+          <div class="card-actions" style="margin-top: 32px;">
+            <a href="knowledge-centre.html" class="btn btn-secondary">Back to Knowledge Centre</a>
+            <a href="contact.html" class="btn btn-primary">Ask a technical question</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
+      <p>DR Technology · Technology Infrastructure · Equipment Supply · Systems Integration</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

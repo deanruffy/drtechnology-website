@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Vs Linux Commands | DR Technology</title>
+  <meta name="description" content="A concise Windows vs Linux command reference covering networking, file operations, and system administration tasks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">DR Technology</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="mobile-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:hello@drtechnology.co.uk" class="nav-cta">Email Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container">
+        <div class="section-heading hero-copy">
+          <p class="eyebrow">Knowledge Centre</p>
+          <h1>Windows & Linux commands quick reference</h1>
+          <p class="hero-text">
+            The following tasks have similar functions in Windows and Linux, but the commands used to perform them are different. This quick reference is designed to help you find the right command for the right operating system.
+          </p>
+          <div class="hero-actions">
+            <a href="knowledge-centre.html" class="btn btn-secondary">Back to Knowledge Centre</a>
+            <a href="contact.html" class="btn btn-primary">Talk to DR Technology</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <article class="article-content">
+          <h2>Windows Vs Linux</h2>
+          <p>
+            Networking Command Cheat Sheet.
+          </p>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Task</th>
+                  <th>Windows</th>
+                  <th>Linux</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Show IP Configuration</td>
+                  <td><code>ifconfig</code></td>
+                  <td><code>ip addr show</code></td>
+                </tr>
+                <tr>
+                  <td>Detailed Network Information</td>
+                  <td><code>ipconfig /all</code></td>
+                  <td><code>ip addr show</code></td>
+                </tr>
+                <tr>
+                  <td>Release IP Address</td>
+                  <td><code>ipconfig /release</code></td>
+                  <td><code>sudo dhclient -r &lt;iface&gt;</code></td>
+                </tr>
+                  <tr>
+                  <td>Renew IP Address</td>
+                  <td><code>ipconfig /renew</code></td>
+                  <td><code>sudo dhclient &lt;iface&gt;</code></td>
+                </tr>
+                <tr>
+                  <td>Flush DNS Cache</td>
+                  <td><code>ipconfig /flushdns</code></td>
+                  <td><code>sudo resolvectl flush-caches</code></td>
+                </tr>
+                <tr>
+                  <td>Ping a Host</td>
+                  <td><code>ping google.com</code></td>
+                  <td><code>ping google.com</code></td>
+                </tr>
+                <tr>
+                  <td>Continuous Ping</td>
+                  <td><code>ping -t google.com</code></td>
+                  <td><code>ping google.com (ctrl+c to stop)</code></td>
+                </tr>
+                <tr>
+                 <td>Trace Network Path</td>
+                  <td><code>tracert google.com</code></td>
+                  <td><code>traceroute google.com</code></td>
+                </tr>
+                <tr>
+                  <td>DNS Lookup</td>
+                  <td><code>nslookup google.com</code></td>
+                  <td><code>nslookup google.com</code></td>
+                </tr>
+                <tr>
+                  <td>View Routing Table</td>
+                  <td><code>route print</code></td>
+                  <td><code>ip route show</code></td>
+                </tr>
+                <tr>
+                  <td>Display ARP Table</td>
+                  <td><code>arp -a</code></td>
+                  <td><code>ip neigh show</code></td>
+                </tr>
+                <tr>
+                  <td>Check Listening Ports</td>
+                  <td><code>netstat -ano</code></td>
+                  <td><code>ss -tuln</code></td>
+                </tr>
+                <tr>
+                  <td>Test TCP Port Connectivity</td>
+                  <td><code>telnet host port or Test-NetConnection</code></td>
+                  <td><code>nc -zv host port</code></td>
+                </tr>
+                <tr>
+                 <td>Network Statistics</td>
+                  <td><code>netstat -e</code></td>
+                  <td><code>ip -s link</code></td>
+                </tr>
+                <tr>
+                  <td>Show Active Connections</td>
+                  <td><code>netstat -an</code></td>
+                  <td><code>ss -tan</code></td>
+                </tr>
+                <tr>
+                  <td>Display MAC Address</td>
+                  <td><code>getmac</code></td>
+                  <td><code>ip link show</code></td>
+                </tr>
+                <tr>
+                  <td>Display Host Name</td>
+                  <td><code>hostname</code></td>
+                  <td><code>hostname</code></td>
+                </tr>
+                <tr>
+                  <td>SSH into Remote Host</td>
+                  <td><code>ssh user@host</code></td>
+                  <td><code>ssh user@host</code></td>
+                </tr>
+                <tr>
+                  <td>Secure Copy Files</td>
+                  <td><code>scp user@host:/path/to/file /local/path/</code></td>
+                  <td><code>scp user@host:/path/to/file /local/path/</code></td>
+                </tr>
+                </tbody>
+            </table>
+
+          <div class="card-actions" style="margin-top: 32px;">
+            <a href="knowledge-centre.html" class="btn btn-secondary">Back to Knowledge Centre</a>
+            <a href="contact.html" class="btn btn-primary">Ask a technical question</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
+      <p>DR Technology · Technology Infrastructure · Equipment Supply · Systems Integration</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

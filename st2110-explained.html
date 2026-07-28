@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMPTE ST 2110 Explained | DR Technology Knowledge Centre</title>
+  <meta name="description" content="A practical explanation of SMPTE ST 2110 from DR Technology, covering what it is, why it matters, and what to consider in modern IP-based media environments.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">DR</span>
+        <span class="brand-text">DR Technology</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="mobile-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:hello@drtechnology.co.uk" class="nav-cta">Email Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero hero-simple">
+      <div class="container article-hero hero-copy">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <a href="knowledge-centre.html">Knowledge Centre</a>
+          <span>›</span>
+          <span aria-current="page">SMPTE ST 2110 explained</span>
+        </nav>
+
+        <p class="eyebrow">Knowledge Centre</p>
+        <h1>SMPTE ST 2110 explained</h1>
+        <p class="hero-text">SMPTE ST 2110 is one of the most important standards families in modern broadcast infrastructure, especially for organisations moving toward IP-based workflows and flexible media transport.</p>
+      </div>
+    </section>
+
+    <section class="section article-section">
+      <div class="container article-layout">
+        <article class="article-content">
+          <h2>What SMPTE ST 2110 is</h2>
+          <p>SMPTE ST 2110 is a family of standards for transporting professional media over IP networks. Instead of bundling everything into a single signal path, it allows video, audio, and related data to move as separate synchronised streams.</p>
+
+          <h2>Why it matters</h2>
+          <p>This approach gives organisations more flexibility when building or scaling technical environments. It can support more adaptable routing, improved interoperability, and modern workflows that fit remote production, distributed environments, and future expansion.</p>
+
+          <h2>What teams need to think about</h2>
+          <p>Moving into an ST 2110 environment is not just a matter of replacing one transport layer with another. Planning usually needs to account for switching, timing, bandwidth, monitoring, interoperability, and operational workflows as one connected system.</p>
+
+          <h2>Where it fits</h2>
+          <p>ST 2110 is relevant in environments where organisations need high-performance media transport and want to design around networked infrastructure rather than traditional fixed signal paths. It is often part of a wider shift toward more flexible broadcast and media operations.</p>
+          
+          <h2>ST 2110-10</h2>
+          <h3>System architecture and synchronization</h3>
+          <h3>There are several important features of ST 2110-10:</h3>
+          <p>Individual audio, video and ancillary data tracks or clips are carried as separate individual streams. These streams are referred to as "essences", e.g., a 5.1 JPEG mp4 clip could have 9 essences: a video essence, 6 separate audio essences, and two closed caption essences, English and Chinese.</p>
+          <p>Real-time Transport Protocol (RTP) is used to transmit streaming essences.</p>
+          <p>Session Initiation Protocol (SIP) is used to manage the connection and distribution of RTP streams, including IP multicast one-to-many distribution.</p>
+          <p>Precision Time Protocol (PTP) provides global microsecond accuracy timing of all essences. Synchronization is based on SMPTE 2059.</p>         
+      
+          <h2>ST 2110-20</h2>
+          <h3>Uncompressed video transport</h3>
+          <p>SMPTE 2110-20 defines the key requirements for transporting uncompressed video essence and is built on the IETF RFC 4175, RTP Payload Format for Uncompressed Video. </p>
+      
+          <h2>ST 2110-21</h2>
+          <h3>Transmission timing</h3>
+          <p>SMPTE 2110-21 defines three classes of devices based on their transmission timing behavior: NL (for Narrow Linear), N (for Narrow), and W (for Wide). NL senders transmit at a constant bit rate. N senders may suspend transmission during the vertical blanking interval. W senders are intended to support software implementations of 2110 and adhere to less rigorous transmission timing requirements. A type W receiver should be able to receive from any type of sender.</p>
+
+
+          <h2>ST 2110-22</h2>
+          <h3>Constant bit-rate compressed video transport</h3>
+          <p>SMPTE 2110-22 defines the key requirements for transporting compressed video essence. The compression standard needs to provide a constant bitrate, a defined RTP payload and low latency to satisfy the needs of Live production. The majority of the SMPTE 2110-22 implementations uses the JPEG XS lightweight low latency compression standard [15] created by the Joint Photographic Experts Group to answer the requirements of the SMPTE 2110 standard. The JPEG XS codec has only a few video lines of latency in software and hardware implementations,[16], which is less than 1 millisecond. SMPTE 2110-22 is used as an alternative to uncompressed video (SMPTE 2110-20) in a live production environment. SMPTE 2110-22 is indeed very suitable for using less bandwidth in local live IP production, remote production, contribution or cloud-based production.</p>
+
+          <div class="article-cta">
+          
+            <a href="services.html" class="btn btn-primary">Explore services</a>
+            <a href="knowledge-centre.html" class="btn btn-secondary">Back to Knowledge Centre</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
+      <p>Knowledge Centre · SMPTE ST 2110 · Broadcast Infrastructure</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
