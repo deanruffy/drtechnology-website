@@ -252,84 +252,85 @@ unset($_SESSION['quote_basket']);
 ?>
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quote Request Received | DR Technology</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Request Received | DR Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="index.html" class="brand">
-        <span class="brand-mark">DR</span>
-        <span class="brand-text">DR Technology</span>
-      </a>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-      <nav class="site-nav" aria-label="Primary navigation">
-        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">
-          <span></span><span></span><span></span>
-        </button>
+      <header class="site-header">
+        <div class="container nav-wrap">
+          <a href="index.html" class="brand">
+            <span class="brand-mark">DR</span>
+            <span class="brand-text">DR Technology</span>
+          </a>
 
-        <ul class="nav-links" id="mobile-menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="mailto:hello@drtechnology.co.uk" class="nav-cta">Email Us</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+          <nav class="site-nav" aria-label="Primary navigation">
+            <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">
+              <span></span><span></span><span></span>
+            </button>
 
-  <main id="main-content">
-    <section class="hero">
-      <div class="container">
-        <div class="section-heading hero-copy">
-          <p class="eyebrow">Quote request received</p>
-          <h1>Thank you, <?= htmlspecialchars($customerName, ENT_QUOTES, 'UTF-8') ?>.</h1>
-          <p class="hero-text">
-            Your request has been received. Your reference is
-            <strong>#<?= $quoteRequestId ?></strong>.
-          </p>
+            <ul class="nav-links" id="mobile-menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="mailto:hello@drtechnology.co.uk" class="nav-cta">Email Us</a></li>
+            </ul>
+          </nav>
         </div>
-      </div>
-    </section>
+      </header>
 
-    <section class="section">
-      <div class="container">
-        <article class="service-card shop-card">
-          <div>
-            <h2>What happens next</h2>
-            <p>
-              A member of the DR Technology team will review your requested equipment
-              and contact you with availability, lead time, and pricing.
-            </p>
-
-            <div class="card-actions">
-              <a href="shop.html" class="btn btn-primary">Continue Browsing</a>
-              <a href="contact.html" class="btn btn-small">Contact DR Technology</a>
+      <main id="main-content">
+        <section class="hero">
+          <div class="container">
+            <div class="section-heading hero-copy">
+              <p class="eyebrow">Quote request received</p>
+              <h1>Thank you, <?= htmlspecialchars($customerName, ENT_QUOTES, 'UTF-8') ?>.</h1>
+              <p class="hero-text">
+                 Your request has been received. Your reference is
+                <strong>#<?= $quoteRequestId ?></strong>.
+              </p>
             </div>
+         </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <article class="service-card shop-card">
+              <div>
+                <h2>What happens next</h2>
+                <p>
+                  A member of the DR Technology team will review your requested equipment
+                  and contact you with availability, lead time, and pricing.
+                </p>
+
+              <div class="card-actions">
+                <a href="shop.html" class="btn btn-primary">Continue Browsing</a>
+                <a href="contact.html" class="btn btn-small">Contact DR Technology</a>
+              </div>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
-    </section>
-  </main>
+        </section>
+      </main>
 
-  <footer class="site-footer">
-    <div class="container footer-wrap">
-      <p>© <?= date('Y') ?> DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
-      <p>DR Technology · Technology Infrastructure · Equipment Supply · Systems Integration</p>
-    </div>
-  </footer>
+      <footer class="site-footer">
+        <div class="container footer-wrap">
+          <p>© <?= date('Y') ?> DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
+          <p>DR Technology · Technology Infrastructure · Equipment Supply · Systems Integration</p>
+        </div>
+      </footer>
 
-  <script src="script.js" defer></script>
-</body>
+    <script src="script.js" defer></script>
+  </body>
 </html>
