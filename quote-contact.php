@@ -132,7 +132,7 @@ if ($products === []) {
                   <?= htmlspecialchars($formError, ENT_QUOTES, 'UTF-8') ?>
                 </p>
               <?php endif; ?>
-              <form method="post" action="submit-quote-request.php">
+              <form id="quote-request-form" method="post" action="submit-quote-request.php">
                 <label for="customer_name">Full name</label>
                 <input
                   id="customer_name"
