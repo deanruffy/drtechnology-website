@@ -31,11 +31,20 @@ if ($productIds !== []) {
     $placeholders = implode(',', array_fill(0, count($productIds), '?'));
 
     $statement = $pdo->prepare(
-        "SELECT id, sku, name, short_description
-         FROM products
-         WHERE id IN ($placeholders)
-           AND active = 1
-         ORDER BY name"
+        "SELECT
+            p.id,
+            p.sku,
+            p.name,
+            p.short_description,
+            pi.image_path,
+            pi.alt_text
+         FROM products p
+         LEFT JOIN product_images pi
+            ON pi.product_id = p.id
+           AND pi.is_primary = 1
+         WHERE p.id IN ($placeholders)
+           AND p.active = 1
+         ORDER BY p.name"
     );
 
     $statement->execute($productIds);
@@ -110,10 +119,20 @@ if ($productIds !== []) {
             </div>
           </article>
         <?php else: ?>
-          <div class="card-grid">
+          <div class="card-grid category-products">
             <?php foreach ($products as $product): ?>
               <article class="service-card shop-card">
                 <div>
+                  <?php if (!empty($product['image_path'])): ?>
+                    <div class="category-product-image-frame">
+                      <img
+                        src="/<?= htmlspecialchars($product['image_path'], ENT_QUOTES, 'UTF-8') ?>"
+                        alt="<?= htmlspecialchars((string) ($product['alt_text'] ?? $product['name']), ENT_QUOTES, 'UTF-8') ?>"
+                        class="category-product-image"
+                      >
+                    </div>
+                  <?php endif; ?>
+
                   <p class="eyebrow">
                     Quantity: <?= (int) ($basket[$product['id']] ?? 0) ?>
                   </p>
