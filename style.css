@@ -314,8 +314,7 @@ textarea {
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 340px));
-  justify-content: start;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   gap: 32px;
   grid-auto-rows: 1fr;
 }
@@ -324,7 +323,7 @@ textarea {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 340px;
+  min-width: 0;
   min-height: 420px;
   padding: 34px 32px 30px;
   border: 1px solid rgba(120, 140, 180, 0.18);
@@ -631,4 +630,23 @@ textarea {
 .product-specification dd {
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+.product-image-frame {
+  display: grid;
+  place-items: center;
+  min-height: 17rem;
+  margin: 1.25rem 0 1.5rem;
+  padding: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.product-image {
+  display: block;
+  width: 100%;
+  max-width: 32rem;
+  max-height: 22rem;
+  object-fit: contain;
 }

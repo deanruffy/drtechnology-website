@@ -60,6 +60,17 @@ $specificationsStatement = $pdo->prepare(
 
 $specificationsStatement->execute([$product['id']]);
 $specifications = $specificationsStatement->fetchAll();
+
+$imageStatement = $pdo->prepare(
+    'SELECT image_path, alt_text
+     FROM product_images
+     WHERE product_id = ?
+     ORDER BY is_primary DESC, sort_order ASC, id ASC
+     LIMIT 1'
+);
+
+$imageStatement->execute([$product['id']]);
+$productImage = $imageStatement->fetch();
 ?>
 <!doctype html>
 <html lang="en">
@@ -138,6 +149,16 @@ $specifications = $specificationsStatement->fetchAll();
             <div>
               <p class="eyebrow">Product details</p>
               <h2>Overview</h2>
+
+              <?php if ($productImage): ?>
+               <div class="product-image-frame">
+                 <img
+                   src="/<?= htmlspecialchars($productImage['image_path'], ENT_QUOTES, 'UTF-8') ?>"
+                   alt="<?= htmlspecialchars((string) ($productImage['alt_text'] ?? $product['name']), ENT_QUOTES, 'UTF-8') ?>"
+                   class="product-image"
+                 >
+               </div>
+            <?php endif; ?>
 
               <?php if (!empty($product['description'])): ?>
                 <p><?= nl2br(htmlspecialchars($product['description'])) ?></p>
