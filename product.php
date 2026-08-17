@@ -50,6 +50,16 @@ if (!$product) {
     http_response_code(404);
     exit('Product not found.');
 }
+
+$specificationsStatement = $pdo->prepare(
+    'SELECT spec_name, spec_value
+     FROM product_specifications
+     WHERE product_id = ?
+     ORDER BY sort_order, id'
+);
+
+$specificationsStatement->execute([$product['id']]);
+$specifications = $specificationsStatement->fetchAll();
 ?>
 <!doctype html>
 <html lang="en">
@@ -137,6 +147,24 @@ if (!$product) {
             </div>
           </article>
 
+        <?php if (!empty($specifications)): ?>
+          <article class="service-card shop-card">
+            <div>
+              <p class="eyebrow">Product details</p>
+              <h2>Technical specifications</h2>
+
+              <dl class="product-specifications">
+               <?php foreach ($specifications as $specification): ?>
+                <div class="product-specification">
+                  <dt><?= htmlspecialchars($specification['spec_name']) ?></dt>
+                  <dd><?= nl2br(htmlspecialchars($specification['spec_value'])) ?></dd>
+                </div>
+                  <?php endforeach; ?>
+               </dl>
+            </div>
+          </article>
+
+        <?php endif; ?>
           <article class="service-card shop-card">
             <div>
               <p class="eyebrow">Request a quote</p>
