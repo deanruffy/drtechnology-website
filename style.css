@@ -610,3 +610,25 @@ textarea {
     gap: 0.3rem;
   }
 }
+/* Product-page layout */
+.card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  max-width: 76rem;
+  margin-inline: auto;
+  align-items: start;
+}
+
+.shop-card {
+  min-width: 0;
+}
+
+.product-specifications,
+.product-specification,
+.product-specification dd {
+  min-width: 0;
+}
+
+.product-specification dd {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
