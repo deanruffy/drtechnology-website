@@ -22,10 +22,50 @@ $pdo = new PDO(
 );
 
 $categories = $pdo->query(
-    'SELECT id, name, description
-     FROM categories
-     ORDER BY name'
+    'SELECT
+        parent.id,
+        parent.name,
+        parent.description,
+        parent.sort_order,
+        child.id AS child_id,
+        child.name AS child_name,
+        child.description AS child_description,
+        child.sort_order AS child_sort_order
+     FROM categories parent
+     LEFT JOIN categories child
+        ON child.parent_id = parent.id
+       AND child.active = 1
+     WHERE parent.parent_id IS NULL
+       AND parent.active = 1
+     ORDER BY
+        parent.sort_order,
+        parent.name,
+        child.sort_order,
+        child.name'
 )->fetchAll();
+
+$categoryGroups = [];
+
+foreach ($categories as $category) {
+    $categoryId = (int) $category['id'];
+
+    if (!isset($categoryGroups[$categoryId])) {
+        $categoryGroups[$categoryId] = [
+            'id' => $categoryId,
+            'name' => $category['name'],
+            'description' => $category['description'],
+            'children' => [],
+        ];
+    }
+
+    if ($category['child_id'] !== null) {
+        $categoryGroups[$categoryId]['children'][] = [
+            'id' => (int) $category['child_id'],
+            'name' => $category['child_name'],
+            'description' => $category['child_description'],
+        ];
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -85,27 +125,44 @@ $categories = $pdo->query(
 
     <section class="section">
       <div class="container">
-        <?php if (!$categories): ?>
+        <?php if ($categoryGroups === []): ?>
           <p>No product categories have been added yet.</p>
         <?php else: ?>
           <div class="card-grid">
-            <?php foreach ($categories as $category): ?>
+            <?php foreach ($categoryGroups as $category): ?>
               <article class="service-card shop-card">
                 <div>
-                  <h3><?= htmlspecialchars($category['name']) ?></h3>
+                  <h3><?= htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8') ?></h3>
 
                   <?php if (!empty($category['description'])): ?>
-                    <p><?= htmlspecialchars($category['description']) ?></p>
+                    <p><?= htmlspecialchars($category['description'], ENT_QUOTES, 'UTF-8') ?></p>
                   <?php else: ?>
                     <p>Browse products in this category and request a quote.</p>
                   <?php endif; ?>
+
+                  <?php if ($category['children'] !== []): ?>
+                    <p class="eyebrow">Choose a product type</p>
+
+                    <div class="category-child-links">
+                      <?php foreach ($category['children'] as $child): ?>
+                        <a
+                          href="category.php?id=<?= (int) $child['id'] ?>"
+                          class="category-child-link"
+                        >
+                          <?= htmlspecialchars($child['name'], ENT_QUOTES, 'UTF-8') ?>
+                        </a>
+                      <?php endforeach; ?>
+                    </div>
+                  <?php endif; ?>
                 </div>
 
-                <div class="card-actions">
-                  <a href="category.php?id=<?= (int) $category['id'] ?>" class="btn btn-small btn-primary">
-                    View Products
-                  </a>
-                </div>
+                <?php if ($category['children'] === []): ?>
+                  <div class="card-actions">
+                    <a href="category.php?id=<?= (int) $category['id'] ?>" class="btn btn-small btn-primary">
+                      View Products
+                    </a>
+                  </div>
+                <?php endif; ?>
               </article>
             <?php endforeach; ?>
           </div>
@@ -133,7 +190,7 @@ $categories = $pdo->query(
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <p>© 2026 DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
+      <p>© <?= date('Y') ?> DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
       <p>DR Technology · Technology Infrastructure · Equipment Supply · Systems Integration</p>
     </div>
   </footer>
