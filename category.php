@@ -137,7 +137,7 @@ $products = $productStatement->fetchAll();
             <p>Select a product to review it and add it to your quote request.</p>
           </div>
 
-          <div class="card-grid">
+          <div class="card-grid category-products">
             <?php foreach ($products as $product): ?>
               <article class="service-card shop-card">
                 <div>

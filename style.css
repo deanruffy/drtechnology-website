@@ -681,3 +681,13 @@ textarea {
     padding: 28px 24px 24px;
   }
 }
+/* Category page spacing: separate product cards from the next section */
+.category-products {
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 760px) {
+  .category-products {
+    margin-bottom: 3.5rem;
+  }
+}
