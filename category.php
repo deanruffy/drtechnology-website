@@ -64,7 +64,7 @@ $products = $productStatement->fetchAll();
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="/Media/favicon.png">
+  <link rel="icon" type="image/png" href="/Media/Favicon.png">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
