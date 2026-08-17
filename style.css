@@ -693,3 +693,23 @@ textarea {
     margin-bottom: 5rem;
   }
 }
+/* Product images in category cards */
+.category-product-image-frame {
+  display: grid;
+  place-items: center;
+  min-height: 13rem;
+  margin: 0 0 1.5rem;
+  padding: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.category-product-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: 12rem;
+  object-fit: contain;
+}

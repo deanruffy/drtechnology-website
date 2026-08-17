@@ -43,11 +43,20 @@ if (!$category) {
 }
 
 $productStatement = $pdo->prepare(
-    'SELECT id, sku, name, short_description
-     FROM products
-     WHERE category_id = ?
-       AND active = 1
-     ORDER BY name'
+    'SELECT
+        p.id,
+        p.sku,
+        p.name,
+        p.short_description,
+        pi.image_path,
+        pi.alt_text
+     FROM products p
+     LEFT JOIN product_images pi
+        ON pi.product_id = p.id
+       AND pi.is_primary = 1
+     WHERE p.category_id = ?
+       AND p.active = 1
+     ORDER BY p.name'
 );
 
 $productStatement->execute([$categoryId]);
@@ -58,8 +67,8 @@ $products = $productStatement->fetchAll();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= htmlspecialchars($category['name']) ?> | DR Technology</title>
-  <meta name="description" content="Browse <?= htmlspecialchars($category['name']) ?> products available from DR Technology.">
+  <title><?= htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8') ?> | DR Technology</title>
+  <meta name="description" content="Browse <?= htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8') ?> products available from DR Technology.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -99,10 +108,10 @@ $products = $productStatement->fetchAll();
       <div class="container">
         <div class="section-heading hero-copy">
           <p class="eyebrow">Product Category</p>
-          <h1><?= htmlspecialchars($category['name']) ?></h1>
+          <h1><?= htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8') ?></h1>
 
           <?php if (!empty($category['description'])): ?>
-            <p class="hero-text"><?= htmlspecialchars($category['description']) ?></p>
+            <p class="hero-text"><?= htmlspecialchars($category['description'], ENT_QUOTES, 'UTF-8') ?></p>
           <?php else: ?>
             <p class="hero-text">
               Browse the products available in this category and request a tailored quote.
@@ -141,11 +150,21 @@ $products = $productStatement->fetchAll();
             <?php foreach ($products as $product): ?>
               <article class="service-card shop-card">
                 <div>
-                  <p class="eyebrow">SKU: <?= htmlspecialchars((string) $product['sku']) ?></p>
-                  <h3><?= htmlspecialchars($product['name']) ?></h3>
+                  <?php if (!empty($product['image_path'])): ?>
+                    <div class="category-product-image-frame">
+                      <img
+                        src="/<?= htmlspecialchars($product['image_path'], ENT_QUOTES, 'UTF-8') ?>"
+                        alt="<?= htmlspecialchars((string) ($product['alt_text'] ?? $product['name']), ENT_QUOTES, 'UTF-8') ?>"
+                        class="category-product-image"
+                      >
+                    </div>
+                  <?php endif; ?>
+
+                  <p class="eyebrow">SKU: <?= htmlspecialchars((string) $product['sku'], ENT_QUOTES, 'UTF-8') ?></p>
+                  <h3><?= htmlspecialchars($product['name'], ENT_QUOTES, 'UTF-8') ?></h3>
 
                   <?php if (!empty($product['short_description'])): ?>
-                    <p><?= htmlspecialchars($product['short_description']) ?></p>
+                    <p><?= htmlspecialchars($product['short_description'], ENT_QUOTES, 'UTF-8') ?></p>
                   <?php endif; ?>
                 </div>
 
