@@ -29,9 +29,10 @@ if ($categoryId < 1) {
 }
 
 $categoryStatement = $pdo->prepare(
-    'SELECT id, name, description
+    'SELECT id, parent_id, name, description
      FROM categories
-     WHERE id = ?'
+     WHERE id = ?
+       AND active = 1'
 );
 
 $categoryStatement->execute([$categoryId]);
@@ -42,25 +43,40 @@ if (!$category) {
     exit('Category not found.');
 }
 
-$productStatement = $pdo->prepare(
-    'SELECT
-        p.id,
-        p.sku,
-        p.name,
-        p.short_description,
-        pi.image_path,
-        pi.alt_text
-     FROM products p
-     LEFT JOIN product_images pi
-        ON pi.product_id = p.id
-       AND pi.is_primary = 1
-     WHERE p.category_id = ?
-       AND p.active = 1
-     ORDER BY p.name'
+$childStatement = $pdo->prepare(
+    'SELECT id, name, description
+     FROM categories
+     WHERE parent_id = ?
+       AND active = 1
+     ORDER BY sort_order, name'
 );
 
-$productStatement->execute([$categoryId]);
-$products = $productStatement->fetchAll();
+$childStatement->execute([$categoryId]);
+$children = $childStatement->fetchAll();
+
+$products = [];
+
+if ($children === []) {
+    $productStatement = $pdo->prepare(
+        'SELECT
+            p.id,
+            p.sku,
+            p.name,
+            p.short_description,
+            pi.image_path,
+            pi.alt_text
+         FROM products p
+         LEFT JOIN product_images pi
+            ON pi.product_id = p.id
+           AND pi.is_primary = 1
+         WHERE p.category_id = ?
+           AND p.active = 1
+         ORDER BY p.name'
+    );
+
+    $productStatement->execute([$categoryId]);
+    $products = $productStatement->fetchAll();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -107,14 +123,17 @@ $products = $productStatement->fetchAll();
     <section class="hero">
       <div class="container">
         <div class="section-heading hero-copy">
-          <p class="eyebrow">Product Category</p>
+          <p class="eyebrow">
+            <?= $category['parent_id'] === null ? 'Product Category' : 'Product Type' ?>
+          </p>
+
           <h1><?= htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8') ?></h1>
 
           <?php if (!empty($category['description'])): ?>
             <p class="hero-text"><?= htmlspecialchars($category['description'], ENT_QUOTES, 'UTF-8') ?></p>
           <?php else: ?>
             <p class="hero-text">
-              Browse the products available in this category and request a tailored quote.
+              Browse available products and request a tailored quote from DR Technology.
             </p>
           <?php endif; ?>
 
@@ -127,7 +146,35 @@ $products = $productStatement->fetchAll();
 
     <section class="section">
       <div class="container">
-        <?php if (!$products): ?>
+        <?php if ($children !== []): ?>
+          <div class="section-heading">
+            <p class="eyebrow">Choose a product type</p>
+            <h2>Browse <?= htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8') ?></h2>
+            <p>Select a product type to view equipment available for quotation.</p>
+          </div>
+
+          <div class="card-grid">
+            <?php foreach ($children as $child): ?>
+              <article class="service-card shop-card">
+                <div>
+                  <h3><?= htmlspecialchars($child['name'], ENT_QUOTES, 'UTF-8') ?></h3>
+
+                  <?php if (!empty($child['description'])): ?>
+                    <p><?= htmlspecialchars($child['description'], ENT_QUOTES, 'UTF-8') ?></p>
+                  <?php else: ?>
+                    <p>Browse products in this category and request a quote.</p>
+                  <?php endif; ?>
+                </div>
+
+                <div class="card-actions">
+                  <a href="category.php?id=<?= (int) $child['id'] ?>" class="btn btn-small btn-primary">
+                    View Products
+                  </a>
+                </div>
+              </article>
+            <?php endforeach; ?>
+          </div>
+        <?php elseif ($products === []): ?>
           <div class="section-heading">
             <h2>Products coming soon</h2>
             <p>
@@ -160,7 +207,10 @@ $products = $productStatement->fetchAll();
                     </div>
                   <?php endif; ?>
 
-                  <p class="eyebrow">SKU: <?= htmlspecialchars((string) $product['sku'], ENT_QUOTES, 'UTF-8') ?></p>
+                  <p class="eyebrow">
+                    SKU: <?= htmlspecialchars((string) $product['sku'], ENT_QUOTES, 'UTF-8') ?>
+                  </p>
+
                   <h3><?= htmlspecialchars($product['name'], ENT_QUOTES, 'UTF-8') ?></h3>
 
                   <?php if (!empty($product['short_description'])): ?>
@@ -183,7 +233,7 @@ $products = $productStatement->fetchAll();
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <p>© 2026 DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
+      <p>© <?= date('Y') ?> DR Technology · Modern technology solutions · hello@drtechnology.co.uk</p>
       <p>DR Technology · Technology Infrastructure · Equipment Supply · Systems Integration</p>
     </div>
   </footer>
