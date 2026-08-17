@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+require __DIR__ . '/vendor/autoload.php';
+
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -161,16 +166,21 @@ $emailLines = [
     'Requested products:',
 ];
 
+$customerProductLines = [];
+
 foreach ($products as $product) {
     $productId = (int) $product['id'];
     $quantity = (int) $basket[$productId];
 
-    $emailLines[] = sprintf(
+    $productLine = sprintf(
         '- %s (%s) × %d',
         $product['name'],
         $product['sku'],
         $quantity
     );
+
+    $emailLines[] = $productLine;
+    $customerProductLines[] = $productLine;
 }
 
 $emailLines[] = '';
@@ -180,21 +190,61 @@ $emailLines[] = $message !== '' ? $message : 'Not provided';
 $emailSubject = 'New quote request #' . $quoteRequestId . ' – ' . $customerName;
 $emailBody = implode(PHP_EOL, $emailLines);
 
-$headers = [
-    'From: DR Technology Website <hello@drtechnology.co.uk>',
-    'Reply-To: ' . $email,
-    'Content-Type: text/plain; charset=UTF-8',
-];
+try {
+    $smtp = require '/home/deanruffy/config/smtp_config.php';
 
-$mailSent = mail(
-    'hello@drtechnology.co.uk',
-    $emailSubject,
-    $emailBody,
-    implode("\r\n", $headers)
-);
+    $mailer = new PHPMailer(true);
+    $mailer->isSMTP();
+    $mailer->Host = $smtp['host'];
+    $mailer->SMTPAuth = true;
+    $mailer->Username = $smtp['username'];
+    $mailer->Password = $smtp['password'];
+    $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mailer->Port = (int) $smtp['port'];
+    $mailer->CharSet = 'UTF-8';
 
-if (!$mailSent) {
-    error_log('Quote request email could not be sent for request #' . $quoteRequestId);
+    /*
+     * Internal DR Technology notification.
+     */
+    $mailer->setFrom($smtp['from_email'], $smtp['from_name']);
+    $mailer->addAddress($smtp['to_email'], $smtp['to_name']);
+    $mailer->addReplyTo($email, $customerName);
+    $mailer->Subject = $emailSubject;
+    $mailer->Body = $emailBody;
+    $mailer->send();
+
+    /*
+     * Customer acknowledgement.
+     */
+    $mailer->clearAllRecipients();
+    $mailer->clearReplyTos();
+
+    $mailer->addAddress($email, $customerName);
+    $mailer->addReplyTo($smtp['to_email'], $smtp['to_name']);
+    $mailer->Subject = 'We have received your quote request #' . $quoteRequestId;
+    $mailer->Body = implode(PHP_EOL, [
+        'Hello ' . $customerName . ',',
+        '',
+        'Thank you for contacting DR Technology.',
+        'We have received your quote request #' . $quoteRequestId . '.',
+        'A member of our team will review your requirements and contact you with availability, lead time, and pricing.',
+        '',
+        'Your requested products:',
+        ...$customerProductLines,
+        '',
+        'Regards,',
+        'DR Technology',
+        'hello@drtechnology.co.uk',
+    ]);
+
+    $mailer->send();
+} catch (Exception $exception) {
+    error_log(
+        'Quote request email could not be sent for request #'
+        . $quoteRequestId
+        . ': '
+        . $exception->getMessage()
+    );
 }
 
 unset($_SESSION['quote_basket']);
